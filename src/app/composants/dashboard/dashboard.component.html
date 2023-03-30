@@ -1,0 +1,41 @@
+<div class="container-fluid bg-light">
+    <div class="container bg-light">
+        <div class="row mt-4" style="height: 500px;">
+            <div class="col"></div>
+            <div class="col-md-6 bg-white shadow">
+                <div class="card bg-warning">
+                    <h4 class="text-white ps-3 pt-2 pb-2">TODO-List</h4>
+                </div>
+                <div class="shadow">
+                    <div class="input-group p-4">
+                        <input type="text" name="title" [(ngModel)]="addTask.title" class="form-control" placeholder="Titre de la tâche">
+                    </div>
+                    <div class="input-group p-4">
+                        <textarea name="description" [(ngModel)]="addTask.description" class="form-control" cols="5" rows="2"></textarea>
+                    </div>
+                    <div hidden class="form-check mb-3 m-3">
+                        <input type="checkbox" class="form-check-input" id="completed" [(ngModel)]="addTask.completed">
+                        <label class="form-check-label ms-2" for="completed">Terminé</label>
+                    </div>
+                    <div class="input-group p-4">
+                        <button class="btn btn-primary btn-lg" (click)="addTasks()">Ajouter</button>
+                    </div>
+                </div>
+
+                <h4 class="text-primary mt-4">Tâches :</h4>
+                <div style="overflow-y: auto; height: 350px;">
+                    <div class="m-3" *ngFor="let task of tasksArray">
+                        <div class="p-2 shadow">
+                            <div class="input-group row ps-3">
+                                <div class="card col-md-12 border-0 text-md-center"> {{task.title}} </div>
+                                <button class="btn btn-outline-primary col me-2 rounded-start">Modifier</button>
+                                <button class="btn btn-outline-danger col" (click)="deleteTasks(task.id)">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>
